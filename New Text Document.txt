@@ -1,0 +1,21 @@
+#RECEIVE INPUT IN PYTHON FOR UVA: http://rizkywardana.github.io/2013/01/23/read-from-stdin-in-python-for-common-algorithm-challenges.html
+import sys
+
+test_file = open("input_test_case", "r");
+for each_line in test_file:
+     print("A" + each_line);
+     input_data = each_line.split(' ');
+     input_data = [int(num_str) for num_str in input_data];
+     
+     diff_count = 0;
+     tracker_array = [0] * (input_data[0]-1);
+     is_jolly = True;
+     for idx in range(1, input_data[0]):
+          diff = abs(input_data[idx+1]-input_data[idx]);
+          if ( ( diff == 0 ) or ( diff > input_data[0]-1 ) or tracker_array[diff-1] ):
+               is_jolly = False;
+               break;
+     if (is_jolly):
+          print('Jolly');
+     else:     
+          print('Not Jolly');          
